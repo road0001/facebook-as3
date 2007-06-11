@@ -99,6 +99,14 @@ package facebook
 		}
 
 		 // FEED RELATED FUNCTIONS
+		 /**
+		  * Publishes a story to a users news feed.  The response from this will be '0' for failure
+		  * or '1' if the call succeeds.  To check the success/failure:
+		  * 
+		  * var result:XML = pEvent.result;
+		  *	trace(result.fb::feed_publishStoryToUser_response_elt);
+		  * this will give a 0 or 1.
+		  */
 		 public function feed_publishStoryToUser(pTitle:String, pBody:String, pImage1:String='', pImage1Link:String='', pImage2:String='', 
 		 										 pImage2Link:String='', pImage3:String='', pImage3Link:String='', pImage4:String='', 
 		 										 pImage4Link:String='', pPriority:int=1):void 
@@ -117,6 +125,14 @@ package facebook
 			invokeMethod('facebook.feed.publishStoryToUser', params);		 		
 		 }
 		 
+ 		 /**
+		  * Publishes a story to a users news feed.  The response from this will be '0' for failure
+		  * or '1' if the call succeeds.  To check the success/failure:
+		  * 
+		  * var result:XML = pEvent.result;
+		  *	trace(result.fb::feed_publishActionOfUser_response_elt);
+		  * this will give a 0 or 1.
+		  */
 		 public function feed_publishActionOfUser(pTitle:String, pBody:String, pImage1:String='', pImage1Link:String='', pImage2:String='', 
 		 										 pImage2Link:String='', pImage3:String='', pImage3Link:String='', pImage4:String='', 
 		 										 pImage4Link:String='', pPriority:int=1):void 
@@ -136,6 +152,17 @@ package facebook
 		 }		 
 		 
 		 // FQL RELATED FUNCTIONS
+		 /**
+		  *  Executes a fql query and returns the results.  The results are in table/column form and can be parsed
+		  * as such.  E.g., executing the query:
+		  * 
+		  *	fb.fql_query("select first_name from user where uid = 7264333230");
+		  * 
+		  * could be parsed via (user is the table, first_name the column):
+		  * 
+		  * var result:XML = pEvent.result;
+		  * trace(result.fb::user.fb::first_name);
+		  */
 		 public function fql_query(pQuery:String):void {
 		 	var params:Array = new Array();
 		 	params['query'] = pQuery;
