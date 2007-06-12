@@ -170,6 +170,15 @@ package facebook
 		 }
 		 
 		 // FRIEND RELATED FUNCTIONS
+		 /**
+		 * Determines whether or not two friends listed by their UIDs are friends.  The
+		 * result is 0 for false or 1 for true.  To parse the results:
+		 * 
+		 * 
+		 * var result:XML = pEvent.result;
+	     * trace(result.fb::friend_info.fb::are_friends);
+		 * this will give a 0 or 1.
+		 */
 		 public function friends_areFriends(pUser1:String, pUser2:String):void {
 		 	var params:Array = new Array();
 		 	params['uids1'] = pUser1;
@@ -177,10 +186,26 @@ package facebook
 		 	invokeMethod('facebook.friends.areFriends', params);
 		 }
 		 
+		 /**
+		  * Get a list of friends for the user associated with the current session.
+		  * The list of friends are returned as a list of UIDs.  To parse the results:
+		  * 
+		  * var result:XML = pEvent.result;
+		  * for each (var uid:XML in result.uid) {}
+		  */
 		 public function friends_get():void {
 		 	invokeMethod('facebook.friends.get', new Array());
 		 }
-		 
+
+
+		 /**
+		  * Get a list of friends for the user associated with the current session who
+		  * are users of this application.
+		  * The list of friends are returned as a list of UIDs.  To parse the results:
+		  * 
+		  * var result:XML = pEvent.result;
+		  * for each (var uid:XML in result.uid) {}
+		  */				 
 		 public function friends_getAppUsers():void {
 		 	invokeMethod('facebook.friends.getAppUsers', new Array());
 		 }
